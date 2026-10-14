@@ -114,11 +114,12 @@ cmake --build build
 ### 4.2 方式二：裸 Makefile（不想用 CMake 时）
 
 ```bash
-mingw32-make          # 等价于编译全部
-mingw32-make run      # 编译并运行主程序
-mingw32-make test     # 编译并运行单元测试
-mingw32-make bench    # 编译并运行性能对比
-mingw32-make clean    # 清理 build/
+mingw32-make            # 编译全部（只编译，不运行）
+mingw32-make run        # 编译并运行主程序
+mingw32-make test       # 编译并运行单元测试
+mingw32-make bench      # 编译并运行性能对比
+mingw32-make bench-build# 只编译性能对比工具
+mingw32-make clean      # 清理 build/
 ```
 
 ### 4.3 方式三：Visual C++ / MSVC（若本机装有 VS 2022）

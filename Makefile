@@ -1,10 +1,11 @@
 # ============================================================================
 #  Makefile —— 不依赖 CMake 的极简构建（MinGW-w64 / MSYS2 / Linux 通用）
 #  用法：
-#     mingw32-make            # 编译主程序 + 测试 + 性能工具
+#     mingw32-make            # 编译主程序 + 测试 + 性能工具（只编译，不运行）
 #     mingw32-make run        # 编译并运行主程序
 #     mingw32-make test       # 编译并运行单元测试
 #     mingw32-make bench      # 编译并运行性能对比（默认 n=5000, q=2000）
+#     mingw32-make bench-build# 只编译性能对比工具
 #     mingw32-make clean      # 清理
 #  说明：Windows 下用 mingw32-make；Linux/macOS 用 make，可加 EXE= 去掉后缀。
 # ============================================================================
@@ -23,13 +24,13 @@ APP_SRC  := src/main.cpp
 TEST_SRC := tests/test_main.cpp tests/test_env.cpp tests/test_sll.cpp tests/test_bst.cpp
 BENCH_SRC:= tools/benchmark.cpp
 
-.PHONY: all app tests bench run test clean rebuild
+.PHONY: all app tests bench bench-build run test clean rebuild
 
-all: app tests bench
+all: app tests bench-build
 
 app: $(APP)
 tests: $(TESTBIN)
-bench: $(BENCHBIN)
+bench-build: $(BENCHBIN)
 
 $(BUILD):
 	@mkdir -p $(BUILD)
